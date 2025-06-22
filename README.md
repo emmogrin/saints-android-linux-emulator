@@ -62,11 +62,12 @@ qemu-img resize debian-11.qcow2 +10G
 Paste below into Termux:
 ```
 qemu-system-x86_64 \
-  -m 2048 \
-  -smp 2 \
-  -drive file=debian-11.qcow2,format=qcow2 \
-  -net nic -net user,hostfwd=tcp::2222-:22 \
-  -nographic
+-m 2048 \
+-smp 2 \
+-drive file=debian-11.qcow2,format=qcow2 \
+-net nic \
+-net user,hostfwd=tcp::2222-:22,hostfwd=tcp::3010-:3010,hostfwd=tcp::3011-:3011 \
+-nographic
 ```
 👤 Login: root (no password)
 
