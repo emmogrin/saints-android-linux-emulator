@@ -121,9 +121,10 @@ apt install curl wget build-essential -y
 # 🧠 Step 6: Expand Disk From Inside Debian
 
 Paste the commands below (this will auto-expand your disk):
-```
+
 ```
 apt install -y parted e2fsprogs
+```
 ```
 parted /dev/sda --script fix
 ```
