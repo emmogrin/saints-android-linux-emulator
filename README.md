@@ -122,34 +122,21 @@ apt install curl wget build-essential -y
 
 Paste the commands below (this will auto-expand your disk):
 ```
-cat <<EOF > ~/resize-disk.sh
-#!/bin/bash
-set -e
-
-echo "Updating package list and installing required tools..."
-apt update
+```
 apt install -y parted e2fsprogs
-
-echo "Fixing GPT to use full disk space..."
+```
 parted /dev/sda --script fix
-
-echo "Resizing partition 1 to full disk..."
+```
+```
 parted /dev/sda --script resizepart 1 100%
-
-echo "Resizing filesystem on /dev/sda1..."
+```
+```
 resize2fs /dev/sda1
+```
+```
+df -h 
+```
 
-echo "Done! Disk expanded successfully."
-df -h /
-EOF
-
-```
-```
-chmod +x ~/resize-disk.sh
-```
-```
-./resize-disk.sh
-```
 ---
 
 
