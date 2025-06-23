@@ -73,11 +73,14 @@ qemu-system-x86_64 \
 -nographic
 EOF
 
-chmod +x ~/start-debian.sh
+
 ```
 
-# 🔁 Now you can start Debian anytime with:
+# 🔁 Now you can start Debian anytime (like anyday anytime with):
+also make sure you are in the qemu-debian directory, if not enter (cd qemu-debian ). remove brackets.
+
 ```
+chmod +x ~/start-debian.sh
 ~/start-debian.sh
 ```
 OR use this
@@ -95,7 +98,7 @@ qemu-system-x86_64 \
 -net user,hostfwd=tcp::2222-:22,hostfwd=tcp::3010-:3010,hostfwd=tcp::3011-:3011 \
 -nographic
 ```
-👤 Login: root (no password) Dont forget root bro root😩
+👤 Login: root (no password) you must be asked for it. dont paste until when asked😩
 
 ```
 root
