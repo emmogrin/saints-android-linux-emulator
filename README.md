@@ -126,10 +126,17 @@ Paste the commands below (this will auto-expand your disk):
 apt install -y parted e2fsprogs
 ```
 ```
-parted /dev/sda --script fix
+parted /dev/sda
 ```
 ```
-parted /dev/sda --script resizepart 1 100%
+print
+```
+```
+resizepart 1
+100%
+```
+```
+quit
 ```
 ```
 resize2fs /dev/sda1
