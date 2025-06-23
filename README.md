@@ -133,8 +133,17 @@ print
 ```
 ```
 resizepart 1
+```
+Warning: Partition /dev/sda1 is being used. Are you sure you want to continue?
+Yes/No? enter Yes.
+```
+Yes
+```
+then you get End? [3220MB]? enter 100%
+```
 100%
 ```
+
 ```
 quit
 ```
