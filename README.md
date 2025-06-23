@@ -57,9 +57,35 @@ qemu-img resize debian-11.qcow2 +10G
 ```
 ---
 
-# 🚀 Step 4: Boot into Debian
+# 🧞 Step 4: Create a Start Script (One-liner Boot)
+
+Back in Termux, paste:
+```
+cat <<EOF > ~/start-debian.sh
+#!/data/data/com.termux/files/usr/bin/bash
+cd ~/qemu-debian
+qemu-system-x86_64 \
+-m 2048 \
+-smp 2 \
+-drive file=debian-11.qcow2,format=qcow2 \
+-net nic \
+-net user,hostfwd=tcp::2222-:22,hostfwd=tcp::3010-:3010,hostfwd=tcp::3011-:3011 \
+-nographic
+EOF
+
+chmod +x ~/start-debian.sh
+```
+
+# 🔁 Now you can start Debian anytime with:
+```
+~/start-debian.sh
+```
+OR use this
 
 Paste below into Termux:
+```
+cd qemu-debian
+```
 ```
 qemu-system-x86_64 \
 -m 2048 \
@@ -69,8 +95,11 @@ qemu-system-x86_64 \
 -net user,hostfwd=tcp::2222-:22,hostfwd=tcp::3010-:3010,hostfwd=tcp::3011-:3011 \
 -nographic
 ```
-👤 Login: root (no password)
+👤 Login: root (no password) Dont forget root bro root😩
 
+```
+root
+```
 
 ---
 
@@ -79,6 +108,8 @@ qemu-system-x86_64 \
 Once inside Debian, paste:
 ```
 apt update && apt upgrade -y
+```
+```
 apt install curl wget build-essential -y
 
 ```
@@ -109,35 +140,15 @@ echo "Done! Disk expanded successfully."
 df -h /
 EOF
 
+```
+```
 chmod +x ~/resize-disk.sh
+```
+```
 ./resize-disk.sh
-
 ```
 ---
 
-# 🧞 Step 7: Create a Start Script (One-liner Boot)
-
-Back in Termux, paste:
-```
-cat <<EOF > ~/start-debian.sh
-#!/data/data/com.termux/files/usr/bin/bash
-cd ~/qemu-debian
-qemu-system-x86_64 \
-  -m 2048 \
-  -smp 2 \
-  -drive file=debian-11.qcow2,format=qcow2 \
-  -net nic -net user,hostfwd=tcp::2222-:22 \
-  -nographic
-EOF
-
-chmod +x ~/start-debian.sh
-```
-# 🔁 Now you can start Debian anytime with:
-```
-~/start-debian.sh
-```
-
----
 
 # 🌍 Optional: Fix Slow or Broken Debian Repos
 
@@ -154,21 +165,16 @@ deb http://deb.debian.org/debian bookworm-updates main contrib non-free
 deb-src http://deb.debian.org/debian bookworm-updates main contrib non-free
 EOF
 
+```
+```
 apt update
+```
+```
 apt full-upgrade -y
-
 ```
 ---
 
-# 🔐 Optional: Enable SSH Login (Port 2222)
-```
-apt install openssh-server -y
-service ssh start
-```
-# From Termux or another device:
-```
-ssh root@127.0.0.1 -p 2222
-```
+
 
 ---
 
