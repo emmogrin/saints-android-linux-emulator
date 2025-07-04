@@ -37,7 +37,7 @@ pkg install x11-repo -y
  pkg install qemu-utils
 ```
 ```
-pkg install qemu-utils qemu-system-x86_64 -y
+pkg install qemu-system-x86_64 -y
 
 ```
 ---
